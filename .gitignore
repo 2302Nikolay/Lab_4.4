@@ -5,6 +5,7 @@
 .Lib
 *.cfg
 .env2
+*.log
 
 primer
 
