@@ -1,0 +1,13 @@
+ERROR:root:Ошибка: 2024 -> Illegal year number
+INFO:root:Добавлен сотрудник: Malzew N.A., Product Manager, поступивший в 23 году.
+INFO:root:Отображен список сотрудников.
+ERROR:root:Ошибка: save -> Unknown command
+INFO:root:Сохранены данные в файл text.txt.
+INFO:root:Отображен список сотрудников.
+ERROR:root:Ошибка: junk after document element: line 3, column 0
+INFO:root:Отображен список сотрудников.
+ERROR:root:Ошибка: junk after document element: line 2, column 103
+ERROR:root:Ошибка:  -> Unknown command
+INFO:root:Загружены данные из файла text.txt.
+INFO:root:Загружены данные из файла text.txt.
+INFO:root:Отображен список сотрудников.
