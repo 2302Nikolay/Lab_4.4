@@ -90,11 +90,11 @@ def load_workers(file_name_2):
 def main(command_line=None):
     # Настройка логгера
     logging.basicConfig(
-        filename='workers.log',
+        filename="workers.log",
         level=logging.INFO,
         filemode="w",
         format="%(asctime)s %(levelname)s %(message)s",
-        encoding="UTF-8"
+        encoding="UTF-8",
     )
 
     # Создаем родительский парсер для определения имени файла

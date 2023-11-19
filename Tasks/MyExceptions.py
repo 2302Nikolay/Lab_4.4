@@ -11,9 +11,9 @@ class InvalidRangeValueException(ValueError):
 
     def __str__(self):
         if self.message:
-            return 'Error, {0} '.format(self.message)
+            return "Error, {0} ".format(self.message)
         else:
-            return 'Error! Invalid range!'
+            return "Error! Invalid range!"
 
 
 class NotFoundFileException(OSError):
@@ -25,9 +25,9 @@ class NotFoundFileException(OSError):
 
     def __str__(self):
         if self.message:
-            return 'Error, {0} '.format(self.message)
+            return "Error, {0} ".format(self.message)
         else:
-            return 'Error! File not found!'
+            return "Error! File not found!"
 
 
 class DeserializationError(Exception):
@@ -39,6 +39,6 @@ class DeserializationError(Exception):
 
     def __str__(self):
         if self.message:
-            return 'Error, {0} '.format(self.message)
+            return "Error, {0} ".format(self.message)
         else:
-            return 'Error! File not found or contains incorrect data!'
+            return "Error! File not found or contains incorrect data!"
