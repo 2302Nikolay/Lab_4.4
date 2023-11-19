@@ -26,7 +26,7 @@ if __name__ == "__main__":
                 raise me.InvalidRangeValueException("Неверный диапазон!")
             break
         except me.InvalidRangeValueException as e:
-            print("Введены некорректные значения, попробуйте снова." + str(e))
+            print(str(e))
 
     matrix = generate_matrix(rows, columns, range_start, range_end)
     print("Сгенерированная матрица:")
