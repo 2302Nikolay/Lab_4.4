@@ -5,6 +5,7 @@ import json
 import os.path
 import argparse
 import pathlib
+import logging
 import MyExceptions as ME
 
 
@@ -87,6 +88,15 @@ def load_workers(file_name_2):
 
 
 def main(command_line=None):
+    # Настройка логгера
+    logging.basicConfig(
+        filename='workers.log',
+        level=logging.INFO,
+        filemode="w",
+        format="%(asctime)s %(levelname)s %(message)s",
+        encoding="UTF-8"
+    )
+
     # Создаем родительский парсер для определения имени файла
     file_parser = argparse.ArgumentParser(add_help=False)
     file_parser.add_argument("filename", action="store", help="The date file name")
@@ -118,25 +128,38 @@ def main(command_line=None):
     )
     # Разбор аргументов командной строки
     args = parser.parse_args(command_line)
+    logging.info("Произведён разбор аргументов коммандной строки")
     # Загрузить всех пользователей из файла, если он сущестсвует
     is_dirty = False
     if os.path.exists(args.filename):
         mans = load_workers(args.filename)
+        logging.info(f"Пользователи из файла {args.filename} успешно загружены")
     else:
         mans = []
-        raise ME.NotFoundFileException()
     # Добавление пользователя
     if args.command == "add":
-        mans = add_mans(mans, args.name, args.number, args.year)
-        is_dirty = True
+        try:
+            mans = add_mans(mans, args.name, args.number, args.year)
+            is_dirty = True
+            logging.info("Пользователь успешно добавлен")
+        except Exception as ex:
+            logging.exception(ex)
+            print(str(ex))
     # Отображение всех пользователей
     elif args.command == "display":
         list_d(mans)
+        logging.info("Отображен список сотрудников.")
     # Отбор требуемых пользователей
     elif args.command == "select":
         select_mans(mans, args.phone)
+        logging.info("Отобраны работники")
     if is_dirty:
-        save_workers(args.filename, mans)
+        try:
+            save_workers(args.filename, mans)
+            logging.warning("Список работников сохранён в файл " + args.filename)
+        except Exception as ex:
+            logging.exception(ex)
+            print(str(ex))
 
 
 if __name__ == "__main__":
